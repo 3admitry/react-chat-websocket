@@ -1,6 +1,5 @@
 import {TextField, Container, Box, Grid, Paper, Button} from '@mui/material';
 import React, {ChangeEvent, KeyboardEvent, useEffect, useRef, useState} from 'react';
-import './App.css';
 import noPhoto from './nophoto.png'
 
 
@@ -52,8 +51,7 @@ function App() {
                 <Box sx={{textAlign: 'center', padding: 2}}>
                     <h2>A simple Chat based on RCA using WebSocket</h2>
                     <p>
-                        To join the chat you should get registered <a href="https://social-network.samuraijs.com/"
-                                                                      target="_blank"> here</a> (it's important to be
+                        To join the chat you should get registered <a href="https://social-network.samuraijs.com/" rel="noreferrer" target="_blank"> here</a> (it's important to be
                         sing in social-network.samuraijs.com) <br/>or use common test
                         account credentials: Email: free@samuraijs.com | Password: free
                     </p>
@@ -88,7 +86,7 @@ function App() {
                                             display: 'flex', width: 500, margin: '10px 0'
                                         }}>
                                             <Box sx={{marginRight: 2}}>
-                                                <img style={{width: '30px'}} src={msg.photo ? msg.photo : noPhoto}/>
+                                                <img alt='' style={{width: '30px'}} src={msg.photo ? msg.photo : noPhoto}/>
                                             </Box>
                                             <Box>
                                                 <Box sx={{fontSize: 9}}>{msg.userName}</Box>
