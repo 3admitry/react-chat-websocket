@@ -30,7 +30,7 @@ function App() {
         return () => {
             socket.close()
         }
-    }, [auth])
+    }, [auth,loading])
 
     const keyPressHandler = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.charCode === 13) {
@@ -60,10 +60,12 @@ function App() {
             password: 'password',
             rememberMe: true,
             captcha: null
-        }).finally(()=>setLoading(true))
+        })
+            .finally(()=>setLoading(true))
             .then((response) => response.data.resultCode === 0 ? setAuth(true) : '',
                 (e) => console.log(e)
-            ).finally(()=>setLoading(false))
+            )
+            .finally(()=>setLoading(false))
     }
 
     return (
@@ -83,8 +85,8 @@ function App() {
                     {loading &&  <CircularProgress />}
                 </Box>
                 <Grid container spacing={2}
-                      sx={{padding: 4, justifyContent: 'center'}}>
-                    <Paper elevation={3} sx={{padding: 3, width: 500}}>
+                      sx={{padding: 4, justifyContent: 'center', wordBreak: 'break-word'}}>
+                    <Paper elevation={0} sx={{padding: 3}}>
                         <Box sx={{paddingTop: 1, alignItems: 'center',}}>
                             <Box sx={{marginBottom: 2}}>
                                 <TextField
