@@ -2,7 +2,6 @@ import {TextField, Container, Box, Grid, Paper, Button} from '@mui/material';
 import React, {ChangeEvent, KeyboardEvent, useEffect, useRef, useState} from 'react';
 import noPhoto from './nophoto.png'
 
-
 type Message = {
     userName: string
     photo: string
@@ -51,9 +50,12 @@ function App() {
                 <Box sx={{textAlign: 'center', padding: 2}}>
                     <h2>A simple Chat based on RCA using WebSocket</h2>
                     <p>
-                        To join the chat you should get registered <a href="https://social-network.samuraijs.com/" rel="noreferrer" target="_blank"> here</a> (it's important to be
+                        To join the chat you should get registered <a href="https://social-network.samuraijs.com/"
+                                                                      rel="noreferrer" target="_blank"> here</a> (it's
+                        important to be
                         sing in social-network.samuraijs.com) <br/>or use common test
-                        account credentials: Email: free@samuraijs.com | Password: free
+                        account credentials: Email: free@samuraijs.com | Password: free<br />
+                        or just click Authorize button
                     </p>
                 </Box>
                 <main>
@@ -86,7 +88,8 @@ function App() {
                                             display: 'flex', width: 500, margin: '10px 0'
                                         }}>
                                             <Box sx={{marginRight: 2}}>
-                                                <img alt='' style={{width: '30px'}} src={msg.photo ? msg.photo : noPhoto}/>
+                                                <img alt="" style={{width: '30px'}}
+                                                     src={msg.photo ? msg.photo : noPhoto}/>
                                             </Box>
                                             <Box>
                                                 <Box sx={{fontSize: 9}}>{msg.userName}</Box>
@@ -95,7 +98,15 @@ function App() {
                                         </Box>
                                     ))}
                                 {messages.length === 0 &&
-                                    <span style={{color: 'red'}}>You are not authorize. Please sing in social-network.samuraijs.com</span>}
+                                    <>
+                                        <div style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
+                                            <div style={{color: 'red', textAlign: 'center', padding: '2rem'}}>You are not authorize. <br/>Please sing in social-network.samuraijs.com</div>
+                                            <div>
+                                                <Button color="warning" variant="contained">Authorize</Button>
+                                            </div>
+                                        </div>
+                                    </>
+                                }
                             </Box>
                         </Paper>
                     </Grid>
